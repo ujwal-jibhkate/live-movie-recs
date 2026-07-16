@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Vendored onnxruntime-web WASM loader (copied into /public), not our source.
+    "public/**",
   ]),
 ]);
 

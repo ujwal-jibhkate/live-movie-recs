@@ -1,26 +1,233 @@
 @import "tailwindcss";
+@import "@xyflow/react/dist/style.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*
+ * Dark mode is driven by a `data-theme` attribute on <html> (set by the inline
+ * script in layout.tsx). Redefine Tailwind's `dark:` variant to key off it.
+ */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/*
+ * ── DESIGN LANGUAGE: Screening room ────────────────────────────────────────
+ * This demo's home is a dark theater, not a dashboard: deep indigo-black,
+ * marquee-bulb gold for structure and interaction, and a single reserved
+ * coral for the one thing that's genuinely alive on the page — the user's
+ * own evolving taste vector. Gold labels the machine; coral is always you.
+ * Light ("lobby") is an accessible alternate, not the primary vision.
+ */
+:root,
+[data-theme="dark"] {
+  --bg: #0b0e14;
+  --surface: #12161f;
+  --surface-2: #1a1f2b;
+  --border: #262c3a;
+  --border-strong: #3a4256;
+  --text: #f2eee2;
+  --text-muted: #a7a9b4;
+  --text-faint: #6b6e7a;
+
+  --marquee: #e8b84b; /* structural / interactive gold — "the machine" */
+  --marquee-dim: #a9852f;
+  --marquee-contrast: #14110a;
+
+  --taste: #ff5f7e; /* reserved for the live user taste signal only */
+  --taste-dim: #b23f56;
+
+  --hard-shadow: 4px 4px 0 var(--border-strong);
+}
+
+[data-theme="light"] {
+  --bg: #f6f1e4;
+  --surface: #fffdf8;
+  --surface-2: #ece4d1;
+  --border: #ded4b9;
+  --border-strong: #1c1710;
+  --text: #1c1710;
+  --text-muted: #5b5546;
+  --text-faint: #8b846f;
+
+  --marquee: #a8760a;
+  --marquee-dim: #7d5905;
+  --marquee-contrast: #fffdf8;
+
+  --taste: #c92e4c;
+  --taste-dim: #8f2035;
+
+  --hard-shadow: 4px 4px 0 var(--border-strong);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border-app: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-text-faint: var(--text-faint);
+  --color-marquee: var(--marquee);
+  --color-marquee-dim: var(--marquee-dim);
+  --color-marquee-contrast: var(--marquee-contrast);
+  --color-taste: var(--taste);
+  --color-taste-dim: var(--taste-dim);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  color-scheme: dark light;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Marquee voice: oversized condensed display type for hero + stage titles. */
+.marquee {
+  font-family: var(--font-display), sans-serif;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  line-height: 0.92;
+  color: var(--text);
+}
+
+/* Small tracked mono caption — the "LIVE" / "PRECOMPUTED" tag voice. */
+.eyebrow {
+  font-family: var(--font-mono), monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.tabular {
+  font-family: var(--font-mono), monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.frame {
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.frame-strong {
+  border: 2px solid var(--border-strong);
+  background: var(--surface);
+}
+
+/* Sprocket-hole rule: a row of small punched circles along an edge, evoking a
+ * film strip. Used to divide the pipeline "reel path" from the rest of the page. */
+.sprocket-rule {
+  height: 14px;
+  background-image: radial-gradient(circle, var(--border-strong) 2.5px, transparent 2.6px);
+  background-size: 22px 14px;
+  background-repeat: repeat-x;
+  background-position: center;
+  opacity: 0.5;
+}
+
+/* Soft glow reserved for the live taste signal (the comet, its badge, its chip). */
+.glow-taste {
+  box-shadow: 0 0 0 1px var(--taste), 0 0 18px -2px var(--taste);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+
+::selection {
+  background: var(--marquee);
+  color: var(--marquee-contrast);
+}
+
+/* Film-reel dial for the MMR λ slider: a gold puck with a hard ink ring. */
+.reel-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+}
+.reel-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 9999px;
+  background: var(--marquee);
+  border: 3px solid var(--border-strong);
+  cursor: grab;
+}
+.reel-slider:active::-webkit-slider-thumb {
+  cursor: grabbing;
+}
+.reel-slider::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 9999px;
+  background: var(--marquee);
+  border: 3px solid var(--border-strong);
+  cursor: grab;
+}
+.reel-slider::-webkit-slider-runnable-track {
+  height: 3px;
+  background: var(--border-strong);
+}
+.reel-slider::-moz-range-track {
+  height: 3px;
+  background: var(--border-strong);
+}
+
+/* ── React Flow: reskinned for the screening-room palette ── */
+.react-flow {
+  background: transparent;
+}
+.react-flow__attribution {
+  display: none;
+}
+.react-flow__edge-path {
+  stroke: var(--border-strong);
+  stroke-width: 2px;
+}
+.react-flow__handle {
+  background: var(--marquee) !important;
+  border: 2px solid var(--border-strong) !important;
+  border-radius: 9999px !important;
+}
+.react-flow__controls {
+  box-shadow: none;
+  border: 1px solid var(--border);
+}
+.react-flow__controls-button {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+.react-flow__controls-button:hover {
+  background: var(--surface-2);
+}
+.react-flow__controls-button svg {
+  fill: currentColor;
+}
+
+.theme-icon-sun {
+  display: none;
+}
+[data-theme="dark"] .theme-icon-sun {
+  display: block;
+}
+[data-theme="dark"] .theme-icon-moon {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }
