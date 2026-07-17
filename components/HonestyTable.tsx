@@ -3,7 +3,7 @@ const ROWS: { stage: string; live: boolean; detail: string }[] = [
     stage: "Movie catalog & embeddings",
     live: false,
     detail:
-      "Frozen, sampled from a 44.6k-movie dataset. The 512-d embedding itself can't be computed in a browser — it comes from CLIP + Sentence-BERT + a fusion network, hundreds of MB of transformer weights.",
+      "Frozen, sampled from a 44.6k-movie dataset. The 512-d embedding itself can't be computed in a browser: it comes from CLIP + Sentence-BERT + a fusion network, hundreds of MB of transformer weights.",
   },
   {
     stage: "Cold-start init",
@@ -13,13 +13,13 @@ const ROWS: { stage: string; live: boolean; detail: string }[] = [
   {
     stage: "Taste update (UserUpdateFFN)",
     live: true,
-    detail: "Re-runs on every pick or removal — a real 3.5MB model, via ONNX + WebAssembly.",
+    detail: "Re-runs on every pick or removal, a real 3.5MB model, via ONNX + WebAssembly.",
   },
   {
     stage: "Two-Tower projection",
     live: true,
     detail:
-      "Both towers run on every update, batched over the user and the entire sampled catalog — nothing here is precomputed either.",
+      "Both towers run on every update, batched over the user and the entire sampled catalog. Nothing here is precomputed either.",
   },
   {
     stage: "Retrieval (cosine top-N)",

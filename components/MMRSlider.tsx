@@ -25,7 +25,7 @@ export function MMRSlider({ lambda, onChange }: MMRSliderProps) {
         <span>More relevant</span>
       </div>
       <p className="text-xs text-text-faint">
-        Re-ranks instantly — no model call, just the live MMR loop over already-scored
+        Re-ranks instantly, no model call, just the live MMR loop over already-scored
         candidates. λ=0.50 is the sweet spot found in the original notebook sweep.
       </p>
     </div>

@@ -12,9 +12,9 @@ const mono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Live Taste Engine — A Recommender That Learns in Your Browser",
+  title: "Live Taste Engine: A Recommender That Learns in Your Browser",
   description:
-    "Pick a few movies you like and watch a real neural network build your taste profile live, entirely client-side via ONNX + WebAssembly — a teaching walkthrough of cold-start recommendation, dynamic embeddings, and diversity-aware ranking.",
+    "Pick a few movies you like and watch a real neural network build your taste profile live, entirely client-side via ONNX + WebAssembly, a teaching walkthrough of cold-start recommendation, dynamic embeddings, and diversity-aware ranking.",
 };
 
 /*

@@ -57,7 +57,7 @@ export function PipelineFlow({
       },
       {
         title: "Cold-Start Init",
-        prod: "A brand-new user has no history — most systems fall back to popularity, losing personalization.",
+        prod: "A brand-new user has no history, so most systems fall back to popularity, losing personalization.",
         demo: "Your taste vector starts as the average embedding of your picks.",
         live: true,
         content: (
@@ -75,7 +75,7 @@ export function PipelineFlow({
         content: (
           <>
             <div className="tabular text-2xl font-semibold text-marquee">
-              {ffnLatencyMs != null ? formatMs(ffnLatencyMs) : "—"}
+              {ffnLatencyMs != null ? formatMs(ffnLatencyMs) : "–"}
             </div>
             <div className="eyebrow mt-0.5 text-text-faint">per pick, in-browser</div>
           </>
@@ -89,7 +89,7 @@ export function PipelineFlow({
         content: (
           <>
             <div className="tabular text-2xl font-semibold text-marquee">
-              {towerLatencyMs != null ? formatMs(towerLatencyMs) : "—"}
+              {towerLatencyMs != null ? formatMs(towerLatencyMs) : "–"}
             </div>
             <KV k="Latent dim" v={128} />
           </>
@@ -98,7 +98,7 @@ export function PipelineFlow({
       {
         title: "Retrieval",
         prod: "Approximate nearest-neighbor search (e.g. FAISS) narrows millions of items to hundreds in milliseconds.",
-        demo: "Exact cosine top-N over 400 items — small enough that 'approximate' isn't even needed.",
+        demo: "Exact cosine top-N over 400 items, small enough that 'approximate' isn't even needed.",
         live: true,
         content: <KV k="Candidates" v={candidateCount} />,
       },

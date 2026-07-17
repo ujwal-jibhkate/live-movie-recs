@@ -11,17 +11,17 @@ export interface Movie {
   plot: string | null;
   /** Relative path under /posters/. */
   poster: string;
-  /** [x, y] in the precomputed PCA(2) space fit on the full 44.6k catalog. */
-  pca: [number, number];
+  /** [x, y, z] in the precomputed PCA(3) space fit on the full 44.6k catalog. */
+  pca: [number, number, number];
 }
 
 /** public/data/pca.json — lets the browser project the live user embedding into
- * the same fixed 2D space as the precomputed movie scatter. */
+ * the same fixed 3D space as the precomputed movie scatter. */
 export interface PcaTransform {
   /** 512-d mean vector subtracted before projection. */
   mean: number[];
-  /** 2×512 component matrix; components[0] and components[1] are the two axes. */
-  components: [number[], number[]];
+  /** 3×512 component matrix; components[0..2] are the three axes. */
+  components: [number[], number[], number[]];
 }
 
 /** The full dataset as loaded at runtime by useDataset. */

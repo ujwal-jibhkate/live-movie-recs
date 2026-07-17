@@ -135,7 +135,7 @@ export default function Home() {
         </h1>
         <p className="max-w-xl text-base text-text-muted">
           Pick a few movies you like below. A real network rebuilds your taste profile
-          after every pick — right here, in this tab, with no server involved — and a
+          after every pick, right here, in this tab, with no server involved, and a
           second network re-ranks the whole catalog against it. Nothing is simulated;
           the honesty table at the bottom says exactly what is and isn&apos;t.
         </p>
@@ -188,7 +188,7 @@ export default function Home() {
           <h2 className="marquee text-2xl text-text">Where your taste lives</h2>
           <p className="max-w-2xl text-sm text-text-muted">
             Every dot is a movie, positioned by a real PCA projection of its 512-d
-            embedding. The {tastePoint ? "glowing" : ""} coral point is you — click any
+            embedding. The {tastePoint ? "glowing" : ""} coral point is you, click any
             star to add or remove it from your picks.
           </p>
           <EmbeddingSpace
@@ -223,9 +223,25 @@ export default function Home() {
 
       <footer className="border-t border-border-app pt-6 text-xs text-text-faint">
         Portfolio / educational demo. Model architecture and training from{" "}
-        <span className="text-text-muted">Dynamic-Embedding-RecSys</span>. Movie data and
-        embeddings from a Hugging Face dataset sampled offline; nothing about a specific
-        person is stored or sent anywhere — everything above runs in your browser.
+        <a
+          href="https://github.com/ujwal-jibhkate/Dynamic-Embedding-RecSys"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-text-muted underline decoration-dotted underline-offset-2 hover:text-marquee"
+        >
+          Dynamic-Embedding-RecSys
+        </a>
+        . Movie data and embeddings from{" "}
+        <a
+          href="https://huggingface.co/datasets/ujwal-jibhkate/enriched-movie-dataset-with-multimodal-embeddings"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-text-muted underline decoration-dotted underline-offset-2 hover:text-marquee"
+        >
+          a Hugging Face dataset I published
+        </a>
+        , sampled offline; nothing about a specific person is stored or sent anywhere.
+        Everything above runs in your browser.
       </footer>
     </main>
   );

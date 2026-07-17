@@ -43,7 +43,7 @@ export function MovieCard({ movie, onClick, selected, badge }: MovieCardProps) {
       <div className="flex flex-col gap-0.5 p-2">
         <div className="line-clamp-1 text-sm font-medium text-text">{movie.title}</div>
         <div className="eyebrow text-text-faint">
-          {movie.year ?? "—"} · {primaryGenre(movie)}
+          {movie.year ?? "–"} · {primaryGenre(movie)}
         </div>
       </div>
     </button>

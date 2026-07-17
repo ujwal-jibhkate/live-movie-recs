@@ -22,7 +22,7 @@ export function SelectedTaste({ picks, onRemove, ffnLatencyMs, towerLatencyMs }:
       </div>
       {picks.length === 0 ? (
         <p className="text-sm text-text-faint">
-          Pick a few movies below — each one runs the live taste-update network.
+          Pick a few movies below, each one runs the live taste-update network.
         </p>
       ) : (
         <div className="flex flex-wrap gap-2">

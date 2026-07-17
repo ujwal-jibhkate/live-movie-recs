@@ -7,7 +7,7 @@ export function formatPercent(x: number): string {
 }
 
 export function formatNames(names: string[], max = 3): string {
-  if (names.length === 0) return "—";
+  if (names.length === 0) return "–";
   if (names.length <= max) return names.join(", ");
   return `${names.slice(0, max).join(", ")} +${names.length - max}`;
 }
