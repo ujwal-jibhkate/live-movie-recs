@@ -243,6 +243,42 @@ export default function Home() {
         , sampled offline; nothing about a specific person is stored or sent anywhere.
         Everything above runs in your browser.
       </footer>
+
+      <footer className="flex flex-col items-center gap-2 border-t border-border-app pt-6 text-xs text-text-faint sm:flex-row sm:justify-between">
+        <span>&copy; 2026 Ujwal Jibhkate</span>
+        <nav className="flex items-center gap-4">
+          <a
+            href="mailto:ujwaljibhkate@gmail.com"
+            className="text-text-muted underline decoration-dotted underline-offset-2 hover:text-marquee"
+          >
+            Email
+          </a>
+          <a
+            href="https://www.linkedin.com/in/ujwal-jibhkate"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-text-muted underline decoration-dotted underline-offset-2 hover:text-marquee"
+          >
+            LinkedIn
+          </a>
+          <a
+            href="https://github.com/ujwal-jibhkate"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-text-muted underline decoration-dotted underline-offset-2 hover:text-marquee"
+          >
+            GitHub
+          </a>
+          <a
+            href="https://ujwal-jibhkate.github.io/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-text-muted underline decoration-dotted underline-offset-2 hover:text-marquee"
+          >
+            Colophon
+          </a>
+        </nav>
+      </footer>
     </main>
   );
 }
